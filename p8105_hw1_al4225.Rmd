@@ -1,0 +1,59 @@
+---
+title: "p8105_hw1_al4225"
+author: "Anjing"
+date: "2022-09-19"
+output: github_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Github:
+https://github.com/al4225/p8105_hw1_Anjing.git
+
+
+```{r penguins}
+data("penguins", package = "palmerpenguins")
+```
+
+## Promlem 1
+### the data in this dataset
+In dataset **penguins**, it concludes the refined information of the study with 8 variables which are species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex and year. 
+
+The study name is PAL0708. The study is about 344 penguins from three species: Adelie, Gentoo and Chinstrap, and they are living in three islands: Biscoe, Dream and Torgersen. 
+
+More details such as names and important values are as follows.
+
+```{r data, echo = FALSE}
+library(palmerpenguins)
+head(penguins)
+summary(penguins)
+```
+### the size of the dataset
+
+There are 344 rows and 8 total columns in **penguins**.
+```{r size}
+nrow(penguins)
+ncol(penguins)
+```
+
+
+### the mean flipper length
+The mean of flipper length is 200.9152.
+
+```{r mean}
+
+mean(penguins$flipper_length_mm, na.rm = TRUE)
+```
+
+### Plot
+We can also visualize the Penguins by making a scatterplot of flipper_length_mm (y) vs bill_length_mm (x). Each color represents a different species.
+
+```{r plot, warning = FALSE}
+library(ggplot2)
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+ggsave(file = "penguins.jpg" )
+```
